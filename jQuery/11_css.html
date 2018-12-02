@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    ---------------------------------------------------------------------------------------------------------------------------------------------
+    <引入css的方式：
+    1.内联样式(样式就在标签内)
+    例：<div style="bakground（背景颜色）: blue;color（文字颜色）:pink ;">这是一个标签</div>
+        像其他标签也可以这样去写，给谁写就给谁加，但是容易产生代码冗余
+    2.内部样式（样式与标签分离）
+    例：head部分
+    <style>
+        div{
+            background: #be95ff;
+        }
+    </style>
+    body部分
+    <div>........</div>
+    适用于代码较少
+    3.外部样式（通过链接）
+    例：在head标签里引入<link 。。。。 href="style.css"/>
+    适用于代码体系较大
+
+</head>
+<body>
+---------------------------------------------------------------------------------------------------------------------------------------------
+    css选择器
+    优先级：!important（直接在属性后面加，但是一般不用）>内联（style）> id
+            > class （对于在同一个class内部的，后面的优先级更高）> 标签选择器 > * (通配符)
+            > 元素自带的 body-->8px
+    *通配符选择器：
+     网页会自带一些 可以
+         *{
+        margin：0px;
+        padding:0px;
+    }
+     1.标签选择器 例如div
+        <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{(直接根据标签名选中某个标签)
+            background-color: mediumorchid;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        fqwudywvefhw
+    </div>
+</body>
+     2.id选择器----#....(通过设置唯一的id，
+     因为一个页面中只允许有一个叫这个的ID)
+    例：<head>
+           <title>Title</title>
+            <style>
+            #div1{（多种选择器可以共存）
+                background:pink;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="div1">
+            1234567
+        </div>
+    </body>
+    3.class选择器 .class名(代表一类)
+    例：<head>
+            <meta charset="UTF-8">
+            <title>Title</title>
+            <style>
+                .qq{
+                    color:red;
+                }
+            </style>
+        </head>
+        <body>
+            <ul>
+                <li>11111</li>
+                <li class="qq">22222</li>
+                <li class="qq">33333</li>
+            </ul>
+        </body>
+      4.后代选择器（派生选择器）
+      空格表示找里面的，选的是所有后代元素
+      例：<head>
+        <meta charset="UTF-8">
+        <title></title>
+        <style>
+            div span {
+                background-color: aqua;
+            }
+            /*选中div中的span,其中，不仅子代可以被选中，
+            所有后代元素都可以被选中*/
+        </style>
+        </head>
+        <body>
+            <div>
+                <span>111111</span>
+            </div>
+            <span>
+                2222222
+            </span>
+            <div>
+                <p>
+                    <span>111111</span>
+                </p>
+            </div>
+        </body>
+        5.子代选择器  >（在低版本浏览器下不好使）
+        （不同于4，只想找亲儿子）
+        例：div>span {
+            background: #2dff3e;
+        }
+        6.分组选择器（群组选择器）用逗号分隔
+        例：.qq,p{（选中所有class是qq的和所有p标签）
+            color: #ff0883;
+        }
+        7.兄弟选择器  +  选择紧邻的
+         #div1 +p{（选中ID是div1和其紧邻的p标签）
+            .....
+        }
+        8.伪类选择器  （用于链接）
+        ：hover
+        (鼠标滑过时改变为其规定的样式)
+         例：   <head>
+            <meta charset="UTF-8">
+            <title></title>
+            <style>
+                a:hover{
+                    ......
+                }
+            </style>
+            </head>
+            <body>
+                <a href="#">click me</a>
+            </body>
+            还有active（正在点）<a:active>,
+            visited（点过的）,
+            link(未做任何操作，正常进入时的样式），
+            focus（获取焦点时的样式）
+            9.伪元素设置器  :first-letter、
+            :first-line
+            <指的是就好像设置了一个别的标签
+            实际没有>
+            (设置对象内第一个字符的样式;另外，还可以设置
+            width和height)
+            例：<head>
+                    .......
+                    <style>
+                       #div5:first-letter {
+                           .......
+                       }
+                    </style>
+                </head>
+                <body>
+                    <div id="div6">
+                        safw  dxfhfdhm  gfhmgkm
+                        tjgjnf  hbegsd  ugf  shdjvb
+                        skj vsjv  hsk
+                    </div>
+                </body>
+        重要！！！！！！通常情况下，为了区分伪元素和伪类，通常给伪类加一个冒号，
+        伪元素加两个冒号，其实加一个冒号也是好使的
+        10.虚拟伪元素
+        相当于在元素内部后面又加了一个元素
+        相当于个行元素
+        #div6::after{
+        content:'哈'；
+        color:....;
+        }
+        #div6::before{
+        content:'呵'；
+        ......
+        }
+
+    ---------------------------------------------------------------------------------------------------------------------------------------------
+   css语法：（CSS样式）
+    1.CSS背景：
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            body {
+                height: 2000000px;
+            }
+            #div1{
+                /*background: red ;*/
+                background-color: mediumorchid;
+                background-image: url("logo.png") ;
+                /*设置背景图像时必须为其设置URL*/
+                background-repeat: no-repeat ;
+                /*背景图片默认重复*/
+                /*重复有三种： no-repeat，repeat-x;repeat-y;*/
+                background-position: 30px 50px;
+                /*对背景图片的定位，用于性能优化，减少http请求*/
+                /*第一个值代表水平走，第二个值代表垂直走，正值向右，负值向左；垂直向下也是正*/
+                /*也可以用百分号表示，比如 background-position: 60%  30%;*/
+                height: 200px;
+                /*学批图，0px表示在中间，用哪定位那*/
+                /*还可以将这些都写到一起，注意没有顺序要求，示例如下：*/
+                /*background: mediumorchid  url("logo.png")  30px  50px  no-repeat ;*/
+                background-attachment: scroll;
+                /*这里要注意背景图不能跑到元素外面去，看其所设置的元素，比如说想让图一直在页面中，就把图放在body里面设计*/
+                /*设置背景属性；默认为scroll(背景图像随页面滚动)fixed(其他动时背景图像不动)inherit(规定从父类继承其background-attachment属性设置)*/
+            }
+        </style>
+    </head>
+    <body>
+    <div id="div1">
+        aytfsauydfw
+    </div>
+    </body>
+    2.CSS文本：
+    <head>
+        <style>
+            #div1{
+                width: 200px;
+                height: 300px;
+                background: #ff0000;
+                text-indent: 30px;
+                /*首行缩进*/
+                text-align:center ;
+                /*对齐方式，还可以是left等，默认左对齐*/
+                /*对行元素以及文本都适用*/
+            }
+            #div2 {
+                width: 200px;
+                height: 300px;
+                background: #3dffc0;
+                text-align: center ;
+                /*文字水平居中*/
+                line-height: 300px;
+                /*单行文字垂直居中(通过行高去实现，而且line-height要与height保持一致)*/
+                /*这里要注意的是没有垂直居中这个语法，但是可以利用这个实现*/
+
+                margin:0 auto ;
+                /*0代表垂直方向*/
+                /*块级元素水平居中，比如像div等*/
+                margin:50px auto ;
+                /*垂直居中，水平自适应*/
+                margin-bottom: 20px;
+                /*用于向两个块元素加空隙*/
+            }
+            a{
+                color: #c044ff;
+                /*设置文本颜色*/
+                text-decoration: none  ;
+                /*用于a标签,a标签默认属性有下划线,none（没有样式），over-line(上划线),line-through(穿过),underline(默认下划线),blink(定义闪烁文本，一般不用)*/
+            }
+        </style>
+    </head>
+    <body>
+    <div id="div1">
+        qjwkre wkfhxnc vdlvhevs  qjwkre wkfhxnc vdlvhevs  qjwkre wkfhxnc vdlvhevs  qjwkre wkfhxnc vdlvhevs  qjwkre wkfhxnc vdlvhevs  qjwkre wkfhxnc vdlvhevs
+    </div>
+    <div id="div2">
+        wygb efgwj
+        <span>ysg</span>
+        <!--这里是想说明对行级元素同样适用，也能居中-->
+    </div>
+    <a href="">baidu</a>
+    </body>
+    /*思考：如何设置多行文字垂直居中*/
+    <head>
+        <style>
+            #div2 {
+                display: table;
+                /*父元素设置table*/
+            }
+           #sub-div {
+               display: table-cell;
+               vertical-align: middle;
+               /*垂直方向*/
+           }
+            img{
+                vertical-align: bottom;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="div2">
+            <!--用两个div嵌套-->
+            <div id="sub-div">
+                大段文字
+            </div>
+        </div>
+    </body>
+    3.CSS字体：
+    注意：与字体有关的属性可以继承
+    <head>
+        <style>
+            a{
+                font-style
+                /*字体风格,常用于规定倾斜体文本,有三种:normal（正常显示，默认）,itallic（斜体）,oblique（倾斜，一般吧不用）*/
+                font-family: ;
+                /*用哪种字体，比如宋体等*/
+                font-weight: 100;
+                /*字体粗细（取值100-900），bold(加粗，等价于700)，normal（正常，等价于400）等*/
+                font-size: 80px;
+                /*字体大小，最小12*/
+                font:.........
+                    /*也可以合起来写*/
+        </style>
+    </head>
+    <body>
+         ..
+    4.CSS链接：
+         见第二条
+    5.CSS列表
+         <head>
+             <style>
+                 ul{
+                     list-style: none;
+                 }
+             </style>
+         </head>
+         <body>
+         <ul>
+             <li>列表去小点</li>
+         </ul>
+         </body>
+     6.CSS其他（查漏补缺）
+         <style>
+             a{
+             display:inline-block
+                 /*行级块元素*/
+                 /*1em相当于当前字体尺寸，2EM2倍*/
+             span{
+             display:block
+                 /*(行块转换)*/
+             div{
+                 display:inline
+                 /*(行块转换)*/
+             }
+         </style>
+
+ ---------------------------------------------------------------------------------------------------------------------------------------------
+
+CSS中的行级元素和块级元素：
+    行级元素：水平分布 不能设置宽高 宽由内容支撑（字多就宽）
+    <span>sdsdf</span>
+    <a href=""></a>
+
+    块级元素：垂直分布 可以设置宽高
+    （自己占据一整行）
+    <div>dfvdf</div>
+    <p>sdgvd</p>
+    <h1>sdfdg</h1>
+    <ul>
+        <li>asdfdd</li>
+    </ul>
+
+    注意：行块如果想相互转化
+    比如想给span设置宽高
+    可以在style标签里这样写：
+    div{
+         display:inline
+     }-----行级元素
+    inline是一个行元素
+    而block是一个块元素
+    span{
+         display:block
+     }----块级元素
+    行级块元素：水平分布 可以设置宽高
+         display:inline-block
+    （又占行又占块）
+        display:none 隐藏
+   注意：如果页面中的两个块级元素中间有小空隙，去掉两个块元素中间的回车即可，或者注释也行
+---------------------------------------------------------------------------------------------------------------------------------------------
+    CSS盒模型:
+        标准盒模型
+         <style>
+             div{
+                 width: 200px;
+                 height: 200px;
+                 background: #3dffc0 ;
+                 padding:90px ;
+                 /*内边距,顺序：上右下左（顺时针）若上下和左右分别一样写两个，四个都一样就写一个，以此类推*/
+                 border:6px solid #ceffe0;
+                 /*边框，实心*/
+                 margin:30px ;
+                 /*外边距*/
+             }
+         </style>
+
+    怪异盒模型：
+    1.没写DOCTYPE，并且IE6以下
+    （比如写padding没有撑大而是向内缩）
+    2.在普通的加属性  box-sizing: border-box;()
+    实现二者相互转化  box-sizing: content-box;(normal)
+
+ ---------------------------------------------------------------------------------------------------------------------------------------------------
+
+    外边距合并：
+         默认选择较大值
+         margin-top: 30px;
+         margin-bottom: 60px;
+    解决方式：
+         float: left;（浮动）<子父元素都可以>
+         position: absolute;（定位）
+    父子间外边距合并：
+    border：1px solid transparency（透明边框）<仅父元素可以>
+         overflow: hidden ;
+         /*溢出隐藏*/
+         padding-top: 50px;
+ --------------------------------------------------------------------------------------------------------------
+     定位：
+             position:
+             static(默认)
+             relative(相对定位,相对于自身原来的位置，空间不被释放)
+             absolute（绝对定位,相对于最近已经定位的祖先元素，如果没有就相对于body，
+             脱离原来文档流，空间释放）
+             注意：不要在页面中使用较多定位，不易修改
+             <style>
+                 div{
+                     height: 30px;
+                     width: 50px;
+                     background: #3dffc0;
+                     display:inline-block;
+                     border:2px solid #c044ff;
+                 }
+                 #div0 {
+                     height: 500px;
+                     width: 800px;
+                     background: #ff0883 ;
+                     /*margin: 50px;*/
+                     position: relative;
+                     left: 20px;
+                     top: 20px;
+                 }
+                 #div2 {
+                     position: absolute;
+                     left: 80px;
+                     top: 30px;
+                 }
+             </style>
+             </head>
+             <body>
+             <div id="div0">
+                 <div id="div1">
+                     div1
+                 </div>
+                 <div id="div2">
+                     div2
+                 </div>
+                 <div id="div3">
+                     div3
+                 </div>
+             </div>
+             </body>
+             ----------------------------------------------------------------------------
+        固定一个小框
+             <style>
+                 body{
+                     height: 400px;
+                 }
+                 #div1 {
+                     height: 50px;
+                     width: 45px;
+                     background: aqua ;
+                     position: fixed;
+                     right: 25px;
+                     bottom: 30px;
+                 }
+             </style>
+             </head>
+             <body>
+             <div id="div1">
+                 div1
+             </div>
+             </body>
+
+             --------------------------------------------------------
+         浮动：
+        float:脱离文档流，空间释放，后边元素上去
+        塌陷：子元素浮动，父元素没有高度
+             解决：1.手动给父元素加高
+                    2.给父元素加overflow: hidden;
+                    3.clear:both
+             <head>
+                 <meta charset="UTF-8">
+                 <title>Title</title>
+                 <style>
+                     #div1,#div2 ,#div3  {
+                         height: 50px;
+                         width: 45px;
+                         background: aqua ;
+                         border: 5px solid #c044ff ;
+                         float: left;
+                     }
+                     h2{
+                         background: #ff0883 ;
+                     }
+                     #div0 {
+                         background: #3dffc0 ;
+                         overflow: hidden;
+                     }
+                     #div1 {
+                         position: absolute;
+                     }
+                     .clear{
+                         clear: both;
+                     }
+                     .icon{
+                         position: absolute;
+                         right: 23px;
+                         top: 15px;
+                         background: fuchsia ;
+                     }
+                 </style>
+             </head>
+             <body>
+             <div id="div0">
+                 <div id="div1">
+                     div1
+                     <span>sdvds</span>
+                 </div>
+                 <div id="div2">div2</div>
+                 <div id="div3">div3</div>
+                 <div class="clear " ></div>
+                 <div class="icon " ></div>
+             </div>
+             <h2>uashfsdv</h2>
+             </body>
+
+     ----------------------------------------------------------------------------------------------------------------
+        css小箭头：
+             <style>
+                 div {
+                     width: 0px;
+                     height: 0px;
+                     border-width: 3px ;
+                     border-style: solid ;
+                     border-color:#999999 transparent transparent transparent;
+                     /*顺序：上右下左,除所需一边外，其余置空白*/
+                 }
+             </style>
+             ---------------------------------------------------------------------------------------------------------
+             css旋转:
+             详细见手册
+            transform:rotate等
+             transform-orign：px px 旋转轴点
+            transition(动画) 可以指定时速 风格  transition:过渡属性（all） 过渡时速  动画类型  延时
+            平移 translateX（px） translateY（px） 向X向Y变换
+             缩放 scale()   旋转rotate(deg)   扭曲skew
+             ------------------------------------------------------------------------
+搜索蓝框 去掉：outline:none;
+             半透明：opacity
+             如果要兼容IE6：filter:alpha(opacity)
+
+
+    </body>
+</html>

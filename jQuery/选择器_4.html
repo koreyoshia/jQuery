@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background: #f28962;
+            border：10px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="div1"></div>
+
+    <script src="jquery-3.3.1.min-production.js"></script>
+    <script>
+        console.log($("#div1").width());
+        // content
+        console.log($("#div1").innerWidth());
+        // padding+content
+        console.log($("#div1").outerWidth(true));
+        // padding+content+margin(有参数时 ，且为true)+border+
+        // 默认padding+content+border
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+            background: #ff0036;
+            height: 100px;
+            width: 150px;
+            display: inline-block;
+            margin-right: 10px;
+        }
+        .box{
+            width: 70%;
+            overflow: hidden;
+        }
+        .content{
+            white-space: nowrap;
+            overflow-x: scroll;
+            overflow-y: hidden;
+            margin-bottom: -20px;
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="content" datatext="123">
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+                <li>10</li>
+            </ul>
+        </div>
+    </div>
+    <button id="prev">上一张</button>
+    <button id="next">下一张</button>
+
+    <script src="jquery-3.3.1.min-production.js"></script>
+    <script>
+        var scrollBar = $(".content")[0];
+        // 利用jquery获取原生js对象
+        // 也可以写成：var scrollBar = $(".content").get(0);
+        // 对应下标可修改
+        var timer = null;
+        $("#prev").on("click",function () {
+            run("right");
+        })
+        $("#next").on('click',function () {
+            run("left");
+        })
+        function run(dire) {
+            var scrollDire = dire == "left" ? scrollBar.scrollLeft + 300 : scrollBar.scrollLeft - 300;
+            $(".content").animate({
+                scrollDire:scrollLeft
+            },500,function () {
+                showArrow();
+            });
+        }
+        function showArrow() {
+            $("#prev").add("#next").show();
+            if(scrollBar.scrollLeft <= 0){
+                $("#prev").hide();
+            }else if(scrollBar.scrollLeft >= scrollBar.scrollWidth - scrollBar.clientWidth){
+                $("#next").hide();
+            }
+        }
+        $(".content").on("scroll",function () {
+            // clearTimeout(timer);
+            // timer = setTimeout(function () {
+            //     showArrow();
+            // },1000)
+            if($(this).data("timer")){
+                clearTimeout($(this).data("timer"));
+            }
+            $(this).data("timer",setTimeout(function(){showArrow()},1000));
+        })
+    </script>
+</body>
+</html>

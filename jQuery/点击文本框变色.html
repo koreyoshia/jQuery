@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .focus{
+            background: #f27b57;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <fieldset>
+            <legend>个人基本信息</legend>
+            <div>
+                名称：
+                <input type="text" id="name" value="姓名">
+            </div>
+            <div>
+                密码：
+                <input type="password" id="password" value="密码">
+            </div>
+            <div>
+                详细信息：
+                <textarea name="" id="" cols="30" rows="10" id="message" value="详细信息">
+                </textarea>
+            </div>
+        </fieldset>
+    </form>
+    <script src="jquery-3.3.1.min-production.js"></script>
+    <script>
+        $(function () {
+            $(":input").focus(function () {
+                $(this).addClass("focus");
+            }).blur(function () {
+                $(this).removeClass("focus");
+            })
+        })
+    </script>
+</body>
+</html>

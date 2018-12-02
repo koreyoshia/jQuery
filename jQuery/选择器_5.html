@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .div1{
+            width: 300px;
+            height: 300px;
+            background: #86daf2;
+            margin: 100px;
+            position: relative;
+        }
+        .div2{
+            width: 100px;
+            height: 100px;
+            background: #e5a8de;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="div1">
+        <div class="div2"></div>
+    </div>
+    <script src="jquery-3.3.1.min-production.js"></script>
+    <script>
+        var div1 = $(".div1");
+        var div2 = $(".div2");
+        // 偏移量
+        console.log(div1.offset());
+        // offset()——文档偏移量
+        console.log(div1.position());
+        // position()——依据定位获取值
+        console.log(div2.position());
+    </script>
+</body>
+</html>

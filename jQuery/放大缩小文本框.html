@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div button{
+            background: #cccccc;
+            color: white;
+        }
+        textarea{
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+        <button id="larger">放大</button>
+        <button id="mini">缩小</button>
+        <br>
+        <textarea name="" id="text" cols="30" rows="10">
+            多行文本高度变化多行文本高度变化多行文本高度变化
+            多行文本高度变化多行文本高度变化多行文本高度变化
+            多行文本高度变化多行文本高度变化多行文本高度变化
+            多行文本高度变化多行文本高度变化多行文本高度变化
+            多行文本高度变化多行文本高度变化多行文本高度变化
+        </textarea>
+
+    <script src="jquery-3.3.1.min-production.js"></script>
+    <script>
+        $(function () {
+            var comment = $("#text");
+            $("#larger").click(function () {
+                if(comment.height() < 300){
+                    comment.height(comment.height() + 30);
+                }
+            })
+            $("#mini").click(function () {
+                if(comment.height() > 50){
+                    comment.height(comment.height() - 30);
+                }
+            })
+        })
+    </script>
+</body>
+</html>

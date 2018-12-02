@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table tr td{
+            border: 1px solid #000000;
+        }
+        table tbody tr:nth-child(1){
+            background: #d0eaf2;
+        }
+        table tbody tr:nth-child(3){
+            background: #e5d0e4;
+        }
+        table tbody tr:nth-child(5){
+            background: #e5d0e4;
+        }
+    </style>
+</head>
+<body>
+    <table cellspacing="0" >
+        <thead>
+            <tr><td colspan="2" >鼠标点击表格就可以编辑</td></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>序号</td>
+                <td>姓名</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td class="selected">张三</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td class="selected">李四</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td class="selected">王五</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td class="selected">赵六</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="jquery-3.3.1.min-production.js"></script>
+    <script>
+        <!--方法一-->
+            // $(function(){
+            //     //找到所有学号的单元格(奇)
+            //     var numTd = $("tbody td:odd");
+            //     //给单元格注册鼠标点击事件
+            //     numTd.click(function () {
+            //         //找到当鼠标点击单元格时，对应的dom 对象（单元格）
+            //         var tdObj = $(this);
+            //         if (tdObj.children("input").length > 0) {
+            //          判断有没有一个input框
+            //             return false;
+            //         // 如果一个函数体中出现return false，往后代码将不再执行
+            //         }
+            //         //获取当前单元格的内容
+            //         var text = tdObj.html();
+            //         //创建一个文本框
+            //         var inputObj = $("<input type='text'>");
+            //         //去掉文本框的边框;设置文本框的文字大小和整体一样
+            //         inputObj.css("border-with", "0").css("font-size","16px")
+            //         //使文本框的宽度和td的宽度相同
+            //         inputObj.width(tdObj.width());
+            //         //设置文本框的背景色
+            //         inputObj.css("background",tdObj.css("background-color"));
+            //         //需要将当前td中的内容放入到文本框中
+            //         inputObj.val(text);
+            //         //清空td中的内容
+            //         tdObj.html("");
+            //         //将文本框插入到对应的td(单元格)中
+            //         inputObj.appendTo(tdObj);
+            //         //文本框插入后被选中
+            //         inputObj.trigger("focus").trigger("select");
+            //         //单元格触发单击事件没有任何返回值
+            //         inputObj.click(function () {
+            //             return false;
+            //         });
+            //         //处理文本框上回车和Esc事件
+            //         inputObj.keydown(function (event){
+            //             //获取当前按下键盘的键值
+            //             var keycode = event.which;
+            //             //处理回车事件,每个which对应一个keycode值，回车键的keycode是13
+            //             if (keycode ==13) {
+            //                 //获取当前文本框中的内容
+            //                 var inputtext = inputObj.val();
+            //                 //将td的内容修改成文本框中的内容
+            //                 tdObj.html(inputtext);
+            //                 return false;
+            //             }
+            //             //处理esc事件
+            //             if (keycode == 27) {
+            //                 alert(inputObj.val());
+            //                 alert(text);
+            //                 //将单元格的内容改变成原来的内容
+            //                 tdObj.html(text);
+            //             }
+            //         });
+            //     });
+            // });
+
+    //    方法二
+        $(".selected").on("click",function(){
+            if($(this).children("input").length == 0){
+                var inpObj = $("<input type='text' />");
+                inpObj.val(this.innerText);
+                $(this).empty();
+                $(this).append(inpObj);
+                inpObj.focus();
+            }
+        })
+
+        // 原本代码：
+        // $(".editable input").on("blur",function(){
+        //   var father = $(this).parent("td");
+        //   // console.log($(this).val());
+        //   father.text($(this).val())
+        //   $(this).remove();
+        // })
+
+        //新动态添加的input框不能被识别，只识别原有的，所以要通过事件委托新处理添加
+        //事件委托代码：
+        // $(".editable").on("blur","input",function(){
+        //   var father = $(this).parent("td");
+        //   // console.log($(this).val());
+        //   father.text($(this).val())
+        //   $(this).remove();
+        // })
+
+        $(".selected").on("focusout",function(){
+            var child = $(this).children("input");
+            $(this).text(child.val());
+        })
+        $(".selected").on("keyup",function(e){
+            if(e.which == 13){
+                $(this).trigger("focusout");
+            }
+        })
+
+        //老式代码（缺点：进行了较多的dom修改，每次新绑定，较为消耗浏览器性能）
+        // $(".editable").on("dblclick",function(){
+        //   var inputObj = $("<input type='text'/>")
+        //   var that = this;
+        //   if($(this).children("input[type='text']").length == 0){
+        //     inputObj.val($(this).text());
+        //     $(this).text("").append(inputObj);
+        //     inputObj.focus();
+        //   }
+        // })
+
+        // $(".editable").on("focusout",function(){
+        //   $(this).text($(this).find("input").val());
+        // })
+
+        // $(".editable").on("keyup",function(e){
+        //   if(e.which == 13){
+        //     $(this).trigger("focusout");
+        //   }
+        // })
+
+        // $(".editable").on("click",function(){
+        //   var inputObj = $("<input type='text'/>")
+        //   var that = this;
+        //   if($(this).children("input[type='text']").length == 0){
+        //     $(":input").blur();
+        //     inputObj.val($(this).text());
+        //     $(this).text("").append(inputObj);
+        //   }
+        //   inputObj.on("keyup",function(e){
+        //     if(e.which == 13){
+        //       $(this).trigger("blur");
+        //     }
+        //   })
+        //   inputObj.on("blur",function(){
+        //     $(that).text(inputObj.val());
+        //   })
+        // })
+    //    focus对应focusin，focusout对应blur，
+        // 但focusout可进行事件冒泡捕获，而blur不可以捕获冒泡事件
+
+    </script>
+</body>
+</html>

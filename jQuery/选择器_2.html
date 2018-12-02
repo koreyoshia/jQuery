@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="text">
+    <ul>
+        <li>heida</li>
+        <li>linda</li>
+        <li>nongda</li>
+        <li>ligong</li>
+        <li>gongcheng</li>
+    </ul>
+    <script src="jquery-3.3.1.min-production.js "></script>
+    <script>
+        // $("li").css("color","red");
+
+        // $("input").on("keyup",function () {
+        //     // console.log(this.value);
+        //     $("li").css("background","null");
+        //     $("li:contains('"+ this.value +"')").css("background","red");
+        // })
+
+        $("input").on("keyup",function () {
+            // console.log(this.value);
+            $("li").css("background","null");
+            $("li:contains('"+ this.value +"')").css("background","red");
+        })
+
+        // visibility: hidden ——可点击
+        // opacity: 0  ——不可点击
+
+        // 原生js设置值获取值：
+        // getAttribute;setAttibute
+        // jQuery:attr
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    </style>
+</head>
+<body>
+
+    <!--<select name="" id="">-->
+        <!--下拉菜单-->
+        <!--<option value="">1</option>-->
+        <!--<option value="">2</option>-->
+    <!--</select>-->
+
+    <div id="box">
+        fellows23
+    </div>
+    <div id="box2"></div>
+    <script src="jquery-3.3.1.min-production.js"></script>
+    <script>
+        // 添加元素
+        var ht = $("<p>abcd</p>");
+        $("#box").append(ht);
+        ht.appendTo("#box");
+        $("#box").prepend(ht);
+        // 有覆盖效果
+        $("#box").text("1223");
+        $("#box2").html("123");
+        $("#box").text("<p>abcd</p>");
+        // 解析成所有文本
+        $("#box2").html("<p>abcd</p>");
+        // 解析标签内容
+
+        // ondblclick ——双击事件
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>你爱好的运动是？</h1>
+    <form action="">
+        <input type="checkbox" name="hobby" value="1" id="checkbox1">足球
+        <input type="checkbox" name="hobby" value="2" id="checkbox2">排球
+        <input type="checkbox" name="hobby" value="3" id="checkbox3">篮球
+        <input type="checkbox" name="hobby" value="4" id="checkbox4">羽毛球
+        <br>
+        <button id="btn1" type="button">全选</button>
+        <button id="btn2" type="button">全不选</button>
+        <button id="btn3" type="button">反选</button>
+        <!--必须要声明一下button的type属性，默认是submit-->
+    </form>
+
+    <script src="jquery-3.3.1.min-production.js"></script>
+    <script>
+        // jQuery方式：
+        // $("#btn1").on("click",function () {
+        //     $("input:checkbox").prop("checked",true);
+        // })
+        // $("#btn2").on("click",function () {
+        //     $("input:checkbox").prop("checked",false);
+        // })
+        // $("#btn3").on("click",function () {
+        //     var check = $("input:checkbox");
+        //     check.each(function (index,ele) {
+        //         if($(ele).prop("checked")){
+        //             $(ele).prop("checked",false);
+        //         }else{
+        //             $(ele).prop("checked",true);
+        //         }
+        //         // 必须加$新定义ele
+        //     })
+        // })
+
+        // jQuery + 原生js:
+        $("#btn1").on("click",function () {
+            $("input:checkbox").prop("checked",true);
+        })
+        $("#btn2").on("click",function () {
+            $("input:checkbox").prop("checked",false);
+        })
+        $("#btn3").on("click",function () {
+            var check = $("input:checkbox");
+            check.each(function (index,ele) {
+                if($(ele).prop("checked")){
+                    $(ele).prop("checked",false);
+                }else{
+                    $(ele).prop("checked",true);
+                }
+                // 必须加$新定义ele
+            })
+        })
+
+        // 非循环：
+        $("#btn3").on("click",function () {
+            var ischeck = $("input:checkbox:checked");
+            var uncheck = $("input:checkbox");
+            ischeck.prop("checked",false);
+            uncheck.prop("checked",true);
+        })
+
+        // 原生js:
+        // var arr = ["a","b","c","d","e"];
+        // arr.forEach(function (ele,index,obj) {
+        //     console.log(ele,index,obj);
+        // })
+
+        // jQuery:
+        // $arr.each(function (index,ele) {
+        //     console.log(ele,index);
+        // })
+
+
+    </script>
+</body>
+</html>

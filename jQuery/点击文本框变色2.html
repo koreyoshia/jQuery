@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .focus{
+            background: #f27b57;
+        }
+    </style>
+</head>
+<body>
+<form action="">
+    <fieldset>
+        <legend>个人基本信息</legend>
+        <div>
+            名称：
+            <input type="text" id="name" value="姓名">
+        </div>
+        <div>
+            密码：
+            <input type="password" id="password" value="密码">
+        </div>
+        <div>
+            详细信息：
+            <textarea name="" id="" cols="30" rows="10" id="message">文本信息
+            </textarea>
+        </div>
+    </fieldset>
+</form>
+<script src="jquery-3.3.1.min-production.js"></script>
+<script>
+    $(function () {
+        $(":input").focus(function () {
+            $(this).addClass("focus");
+            if($(this).val() == this.defaultValue){
+                this.value = "";
+            }
+        //    $(":input")获取所有Input和textarea
+        }).blur(function () {
+            $(this).removeClass("focus").val(this.value == "" ?this.defaultValue:this.value
+                // var aaa;
+                //     if(this.value == ""){
+                //         aaa = this.defaultValue;
+                //     }else{
+                //         aaa = this.value;
+                //     }
+                //     return aaa;
+
+            );
+        })
+    })
+    // 获取默认属性值：
+    // 1.this.defaultValue
+    // 2.$(this).attr("value")
+</script>
+</body>
+</html>

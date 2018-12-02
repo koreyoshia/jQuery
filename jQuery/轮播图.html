@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .wrapper{
+            width: 270px;
+            position: relative;
+            margin: 200px auto;
+        }
+        .container{
+            float: left;
+            width: 270px;
+            height: 380px;
+            position: absolute;
+        }
+        .container img{
+            width: 270px;
+            height: 380px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container"><img src="images/student5.png" alt="" id="img1"></div>
+        <div class="container"><img src="images/teacher.jpg" alt="" id="img2"></div>
+        <div class="container"><img src="images/teacher4.jpg" alt="" id="img3"></div>
+        <div class="container"><img src="images/teacher5.jpg" alt="" id="img4"></div>
+        <div class="container"><img src="images/teacher8.jpg" alt="" id="img5"></div>
+    </div>
+
+    <script src="jquery-3.3.1.min-production.js"></script>
+    <script>
+        var oImg = $(".container img")[0];
+        var imgIndex = 0;
+        for(var i = 0;i < oImg.length;i++){
+            $(this).on("click",function () {
+                this.index = imgIndex++;
+            })
+        }
+    </script>
+</body>
+</html>

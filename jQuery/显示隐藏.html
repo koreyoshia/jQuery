@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background: #e5a8de;
+        }
+        .dn{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <button id="btn">变化效果</button>
+
+    <script src="jquery-3.3.1.min-production.js"></script>
+    <script>
+        $("#btn").on("click",function () {
+            // $(".box").css("display","none");
+            // $(".box").addClass("dn");
+            // $(".box").hide();
+            // $(".box").show();
+            // $(".box").toggleClass("dn");
+            // $(".box").toggle();
+        })
+    </script>
+</body>
+</html>

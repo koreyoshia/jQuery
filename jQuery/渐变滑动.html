@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background: #b8f2a9;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <button class="fadein">fadein</button>
+    <button class="fadeout">fadeout</button>
+    <button class="fadetoggle">fadetoggle</button>
+    <button class="slideup">slideup</button>
+    <button class="slidedown">slidedown</button>
+    <script src="jquery-3.3.1.min-production.js"></script>
+    <script>
+        $(".fadein").on("click",function () {
+            $(".box").fadeIn();
+            // 可以添加回调函数
+            // $(".box").fadeIn(function () {
+            //     console.log();
+            // });
+        })
+        $(".fadeout").on("click",function () {
+            $(".box").fadeOut();
+        })
+        $(".fadetoggle").on("click",function () {
+            $(".box").fadeToggle();
+        })
+        // 相当于css3透明度渐变效果
+        $(".slideup").on("click",function () {
+            $(".box").slideUp();
+            // 存在参数如，slow ,fast或数值
+        })
+        $(".slidedown").on("click",function () {
+            $(".box").slideDown();
+        })
+        // $(".animate").on("click",function () {
+        //     $(".box").animate({
+        //         weight:400,
+        //     },1000);
+        // })
+        // stop(e,e)停止本次，直接执行下一次
+        // 两个参数
+    </script>
+</body>
+</html>

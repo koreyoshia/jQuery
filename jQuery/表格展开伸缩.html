@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        tbody tr:nth-child(1){
+            background: #e5a8de;
+        }
+        tbody tr:nth-child(4){
+            background: #e5a8de;
+        }
+        tbody tr:nth-child(7){
+            background: #e5a8de;
+        }
+        table tbody .selected{
+            background: #86daf2;
+        }
+        /*要注意权重值问题，查看是否被优先级覆盖*/
+    </style>
+</head>
+<body>
+    <table cellspacing="0" >
+        <thead>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>暂住地</th>
+        </thead>
+        <tbody>
+        <!--colspan;rowspan进行表格行列合并-->
+            <tr class="title" id="row_01"><td colspan="3">前台设计组</td></tr>
+            <tr class="content_row_01">
+                <td>张三</td>
+                <td>男</td>
+                <td>浙江宁波</td>
+            </tr>
+            <tr class="content_row_01">
+                <td>李四</td>
+                <td>女</td>
+                <td>浙江杭州</td>
+            </tr>
+            <tr class="title" id="row_02"><th colspan="3">前台开发组</th></tr>
+            <tr class="content_row_02">
+                <td>王五</td>
+                <td>男</td>
+                <td>湖南长沙</td>
+            </tr>
+            <tr class="content_row_02">
+                <td>赵六</td>
+                <td>男</td>
+                <td>浙江温州</td>
+            </tr>
+            <tr class="title" id="row_03"><th colspan="3">后台开发组</th></tr>
+            <tr class="content_row_03">
+                <td>Rain</td>
+                <td>男</td>
+                <td>浙江杭州</td>
+            </tr>
+            <tr class="content_row_03">
+                <td>MAXMAN</td>
+                <td>女</td>
+                <td>浙江杭州</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="jquery-3.3.1.min-production.js"></script>
+    <script>
+            $(".title").on("click",function () {
+                $(this).toggleClass("selected");
+                //方法一：
+                // $(this).siblings(".content_"+this.id).toggle();
+                //方法二：
+                $(this).nextUntil(".title").toggle();
+                // next();nextAll()
+            //    上述均可以写成一行
+            })
+    </script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>购票选座</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: #000;
+        }
+        .wrapper{
+            width: 750px;
+            margin: 100px auto;
+        }
+        .header{
+            width: 750px;
+            margin-top: -100px;
+            border-bottom: 1px solid #898989;
+        }
+        .header-top{
+            background: #ffffff;
+            font-size: 20px;
+        }
+        .header-footer{
+            color:#ffffff;
+            font-size: 20px;
+            margin-left: 10px;
+        }
+        .optional span{
+            width: 30px;
+            height: 20px;
+            background: #ffffff;
+            display: inline-block;
+        }
+        .selected span{
+            width: 30px;
+            height: 20px;
+            background: #ff0036;
+            display: inline-block;
+        }
+        .sold span{
+            width: 30px;
+            height: 20px;
+            background: #45b2f2;
+            display: inline-block;
+        }
+        .sits{
+            width: 750px;
+            position: relative;
+            border-bottom: 1px solid #898989;
+        }
+        .left{
+            width: 300px;
+            margin-top: 10px;
+            position: absolute;
+            display: inline-block;
+        }
+        .right{
+            margin-left: 490px;
+            margin-top: 10px;
+            display: inline-block;
+        }
+        .left,.right li{
+            list-style: none;
+            width: 30px;
+            height: 20px;
+            background: #ffffff;
+            float: left;
+            margin-left: 3px;
+        }
+        .sits-number{
+            width: 750px;
+            padding-bottom: 20px;
+        }
+        .sits-number-top span{
+            color: white;
+            font-size: 20px;
+        }
+        .snt-right{
+            margin-left: 439px;
+        }
+        .sits-number-footer{
+            margin: 10px 0 0 10px;
+        }
+        .sits-number-footer span{
+            width: 30px;
+            height: 15px;
+            border: 1px solid #f2df73;
+            color: #f2df73;
+            font-size: 20px;
+            padding: 0 10px 5px 10px;
+            margin: 10px 0 0 10px;
+        }
+        .footer{
+            width: 750px;
+            height: 33px;
+            background: #898989;
+        }
+        .footer-right{
+            background: #f2df73;
+            font-size: 25px;
+            width: 100px;
+            height: 33px;
+            text-align: center ;
+            margin-left: 469px;
+        }
+        .fl-1{
+            font-size: 25px;
+            color: #dddddd;
+        }
+        .fl-2{
+            color: #ff0036;
+            font-size: 25px;
+        }
+        .fl-3{
+            font-size: 16px;
+            color: #dddddd;
+            text-align: center ;
+            line-height: 33px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <div class="header-top">
+                <span>今天1月6日</span><span>13:20</span>
+            </div>
+            <div class="header-footer">
+                <span class="optional"><span></span>可选</span>
+                <span class="selected"><span></span>已选</span>
+                <span class="sold"><span></span>已售</span>
+            </div>
+        </div>
+
+        <div class="sits">
+            <div class="left">
+                <ul class="seat">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <div class="right">
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="sits-number">
+            <div class="sits-number-top">
+                <span>已选座位</span><span class="snt-right">最多可选择5个座位</span>
+            </div>
+            <div class="sits-number-footer">
+                <span>9排9座</span><span>9排3座</span>
+            </div>
+        </div>
+
+        <div class="footer">
+            <span class="fl-1">合计：</span>
+            <span class="fl-2">￥0</span>
+            <span class="fl-3">￥99*0</span>
+            <span class="footer-right">确认选座</span>
+        </div>
+    </div>
+
+    <script src="jquery-3.3.1.min-production.js"></script>
+    <script>
+        var aLi = new Array();
+        for(var i = 0;i < ){
+
+        }
+    </script>
+</body>
+</html>

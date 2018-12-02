@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+        }
+        .clearfix::after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .container{
+            border: 1px solid #000;
+            width: 450px;
+            margin:0 auto;
+        }
+        .top-nav{
+            background-color: #000;
+            border-bottom: 1px solid #000;
+        }
+        .top-nav ul{
+            padding: 0
+        }
+        .top-nav li{
+            height: 40px;
+            line-height: 40px;
+            padding: 0 20px;
+            color: #fff;
+            float: left;
+            list-style: none;
+        }
+        .top-nav .active{
+            background-color: #ddd;
+            color: #000;
+        }
+        .content ul{
+            display: none;
+        }
+        .content .active{
+            display: block
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="top-nav">
+            <ul class="nav-ul clearfix">
+                <li class="active">第一课</li>
+                <li>第二课</li>
+                <li>第三课</li>
+            </ul>
+        </div>
+        <div class="content">
+            <ul class="active">
+                <li>网页特效原理分析</li>
+                <li>网页特效原理分析</li>
+                <li>网页特效原理分析</li>
+                <li>网页特效原理分析</li>
+                <li>第一页</li>
+            </ul>
+            <ul>
+                <li>第二页</li>
+                <li>改变网页背景颜色</li>
+            </ul>
+            <ul>
+                <li>第三页</li>
+                <li>JavaScript组成：ECMAScript、DOM、BOM，JavaScript兼容性来源</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="jquery-3.3.1.min-production.js"></script>
+    <script>
+        // .triggerHandler( "event" )只触发第一个对象事件，不会冒泡
+        // 不同于trigger
+        // focus--blur   获取焦点--失去焦点
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        thead th{
+            border-bottom:1px solid #000000;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        筛选：
+        <input type="text" id="full">
+    </div>
+
+    <table cellspacing="0" >
+        <thead>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>暂住地</th>
+        </thead>
+        <tbody>
+            <tr class="content">
+                <td>张三</td>
+                <td>男</td>
+                <td>浙江宁波</td>
+            </tr>
+            <tr class="content">
+                <td>李四</td>
+                <td>女</td>
+                <td>浙江杭州</td>
+            </tr>
+            <tr class="content">
+                <td>王五</td>
+                <td>男</td>
+                <td>湖南长沙</td>
+            </tr>
+            <tr class="content">
+                <td>赵六</td>
+                <td>男</td>
+                <td>浙江温州</td>
+            </tr>
+            <tr class="content">
+                <td>Rain</td>
+                <td>男</td>
+                <td>浙江杭州</td>
+            </tr>
+            <tr class="content">
+                <td>MAXMAN</td>
+                <td>女</td>
+                <td>浙江杭州</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="jquery-3.3.1.min-production.js"></script>
+    <script>
+        $("#full").on("keyup",function () {
+            $(".content").hide().filter(":contains('"+ this.value +"')").show();
+            // filter表示过滤事件，格式：.filter(".content:contains('"+ this.value +"')")
+            // 如果事件执行顺序有先后即后一个事件是建立在前一个基础之上的，
+            // 此时要把后面执行的事件加在前一个之后，不能换行新写
+            // 否则重新加载事件
+        })
+    </script>
+</body>
+</html>
